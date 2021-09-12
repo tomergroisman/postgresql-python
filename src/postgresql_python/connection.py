@@ -3,7 +3,7 @@ from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
 
 
 class Connection:
-    def __init__(self, user, password, db_name='postgres'):
+    def __init__(self, user: str, password: str, db_name: str = 'postgres'):
         """
         PostgreSQL constructor
 

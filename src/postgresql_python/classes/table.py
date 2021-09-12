@@ -1,4 +1,5 @@
 from postgresql_python.connection import Connection
+from postgresql_python.types import Column, ForignKey, Instance
 
 
 class Table(Connection):
@@ -7,7 +8,13 @@ class Table(Connection):
 
     """
 
-    def create_table(self, table_name, columns, primary_keys=None, forign_keys=None):
+    def create_table(
+        self,
+        table_name: str,
+        columns: list[Column],
+        primary_keys: list[str] = None,
+        forign_keys: list[ForignKey] = None
+    ):
         """
         Create a new table in the database
 
@@ -19,7 +26,10 @@ class Table(Connection):
             constrains (list)
         }
         - *primary_keys*: A list of primary keys (string)
-        - *forign_keys*: A list of forgin keys dictionaties: {name (string), reference (string)}
+        - *forign_keys*: A list of forgin keys dictionaties: {
+            name (string),
+            reference (string)
+        }
 
         """
         str_columns = None
@@ -55,7 +65,7 @@ class Table(Connection):
         )
         self._cursor.execute(create_db_query)
 
-    def drop_table(self, table_name):
+    def drop_table(self, table_name: str):
         """
         Drop a table from the database
 
@@ -65,7 +75,7 @@ class Table(Connection):
         drop_table_query = f'DROP TABLE {table_name}'
         self._cursor.execute(drop_table_query)
 
-    def insert(self, table_name, instance):
+    def insert(self, table_name: str, instance: Instance):
         """
         Insert an instance to table
 
@@ -88,7 +98,7 @@ class Table(Connection):
         )
         self._cursor.execute(insert_instance_query)
 
-    def get(self, table_name, filter='*'):
+    def get(self, table_name: str, filter: str = '*'):
         """
         Get instances from the table
 

@@ -7,7 +7,7 @@ class Database(Connection):
 
     """
 
-    def create_database(self, db_name):
+    def create_database(self, db_name: str):
         """
         Create a new database
 
@@ -18,7 +18,7 @@ class Database(Connection):
         create_db_query = f'CREATE DATABASE {db_name}'
         self._cursor.execute(create_db_query)
 
-    def drop_database(self, db_name):
+    def drop_database(self, db_name: str):
         """
         Drop a database
 
