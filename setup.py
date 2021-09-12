@@ -7,6 +7,6 @@ setup(
     description='Python PostgreSQL Utils',
     author='Tomer Groisman',
     author_email='tomergroisman@gmail.com',
-    packages=['psycopg2', 'flake8'],
+    install_requires=['psycopg2', 'flake8'],
     package_dir={'': 'src'}
 )
