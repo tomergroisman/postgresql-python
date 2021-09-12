@@ -19,9 +19,17 @@ class Connection:
 
     def connect(self):
         """
-        Connect to PostgreSQL database
+        Connect to PostgreSQL server
 
         """
         self._conn = psycopg2.connect(user=self._user, password=self._password, dbname=self._db_name)
         self._conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         self._cursor = self._conn.cursor()
+
+    def disconnect(self):
+        """
+        Disconnect from PostgreSQL server
+
+        """
+        self._conn.close()
+        self._cursor = None
