@@ -2,7 +2,7 @@ from setuptools import setup
 
 
 setup(
-    name='postgrsql-python',
+    name='postgrsql_python',
     version='1.0.0',
     description='Python PostgreSQL Utils',
     author='Tomer Groisman',
