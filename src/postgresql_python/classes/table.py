@@ -1,4 +1,4 @@
-from connection import Connection
+from postgresql_python.connection import Connection
 
 
 class Table(Connection):
