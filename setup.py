@@ -2,11 +2,11 @@ from setuptools import setup
 
 
 setup(
-    name='postgrsql_python',
+    name='postgresql_python',
     version='1.0.0',
     description='Python PostgreSQL Utils',
     author='Tomer Groisman',
-    author_email='tomergroisman@gmail.com',
     install_requires=['psycopg2', 'flake8'],
-    package_dir={'': 'src'}
+    package_dir={'postgresql_python': 'src'},
+    packages=['postgresql_python', 'postgresql_python.classes']
 )
