@@ -90,15 +90,16 @@ class Table(Connection):
         )
         self._cursor.execute(insert_instance_query)
 
-    def get(self, table_name: str, filter: str = '*'):
+    def get(self, table_name: str, columns: str = '*', filter: str = '1'):
         """
         Get instances from the table
 
         - *table_name*: The table name to get from
+        - *columns (optional)*: The columns to filter, default is all columns
         - *filter (optional)*: A SQL query filter
 
         """
-        get_query = f'SELECT {filter} FROM {table_name}'
+        get_query = f'SELECT {columns} FROM {table_name} WHERE {filter}'
         self._cursor.execute(get_query)
         results = self._cursor.fetchall()
         return results
