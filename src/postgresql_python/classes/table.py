@@ -19,17 +19,9 @@ class Table(Connection):
         Create a new table in the database
 
         - *table_name*: The new table name
-        - *columns*: A list of column dictionaties: {
-            name (string),
-            data_type (string),
-            length (number),
-            constrains (list)
-        }
-        - *primary_keys*: A list of primary keys (string)
-        - *forign_keys*: A list of forgin keys dictionaties: {
-            name (string),
-            reference (string)
-        }
+        - *columns*: A list of column dictionaties
+        - *primary_keys?*: A list of primary keys
+        - *forign_keys?*: A list of forgin keys dictionaties
 
         """
         str_columns = None
@@ -80,7 +72,7 @@ class Table(Connection):
         Insert an instance to table
 
         - *table_name*: The table name to insert
-        - *instance*: An instance dictionary: {columns (list<string>), values(list<string>)}
+        - *instance*: An instance dictionary
 
         """
         columns = instance.get('columns', None)
@@ -112,5 +104,5 @@ class Table(Connection):
         return results
 
 
-def wrap_string_with_quotes(str):
+def wrap_string_with_quotes(str: str):
     return f"'{str}'"
