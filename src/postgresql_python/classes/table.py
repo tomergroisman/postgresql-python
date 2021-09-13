@@ -90,7 +90,7 @@ class Table(Connection):
         )
         self._cursor.execute(insert_instance_query)
 
-    def get(self, table_name: str, columns: str = '*', filter: str = '1'):
+    def get(self, table_name: str, columns: str = '*', filter: str = '1=1'):
         """
         Get instances from the table
 
