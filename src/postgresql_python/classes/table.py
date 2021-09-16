@@ -26,10 +26,10 @@ class Table(Connection):
         """
         str_columns = None
         for column in columns:
-            name = column.get('name', None)
-            data_type = column.get('data_type', None)
-            length = f'({column.get("length")})' if column.get('length', None) else ''
-            constrains = f'{" ".join(column.get("constrains"))}' if column.get('constrains', None) else None
+            name = column.get('name')
+            data_type = column.get('data_type')
+            length = f'({column.get("length")})' if column.get('length') else ''
+            constrains = f'{" ".join(column.get("constrains"))}' if column.get('constrains') else None
             parsed_column = filter(None, [name, data_type + length if data_type else None, constrains])
             str_column = " ".join(parsed_column)
             try:
@@ -75,9 +75,9 @@ class Table(Connection):
         - *instance*: An instance dictionary
 
         """
-        columns = instance.get('columns', None)
+        columns = instance.get('columns')
         str_columns = f'({", ".join(columns)})' if columns else ''
-        values = instance.get('values', None)
+        values = instance.get('values')
         if values is None:
             raise AttributeError('No values were passed')
         str_values = f'({", ".join([wrap_string_with_quotes(value) for value in values])})'
