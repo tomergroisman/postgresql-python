@@ -1,5 +1,6 @@
 import psycopg2
 from psycopg2.extensions import ISOLATION_LEVEL_AUTOCOMMIT
+from psycopg2.extras import RealDictCursor
 
 
 class Connection:
@@ -22,7 +23,12 @@ class Connection:
         Connect to PostgreSQL server
 
         """
-        self._conn = psycopg2.connect(user=self._user, password=self._password, dbname=self._db_name)
+        self._conn = psycopg2.connect(
+            user=self._user,
+            password=self._password,
+            dbname=self._db_name,
+            cursor_factory=RealDictCursor
+        )
         self._conn.set_isolation_level(ISOLATION_LEVEL_AUTOCOMMIT)
         self._cursor = self._conn.cursor()
 
