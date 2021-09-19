@@ -1,4 +1,4 @@
-from typing import TypedDict
+from typing import TypedDict, List
 
 
 class Column(TypedDict):
@@ -8,13 +8,13 @@ class Column(TypedDict):
     - *name*: string
     - *data_type*: string
     - *length*: int
-    - *constrains*: list[string]
+    - *constrains*: List[string]
 
     """
     name: str
     data_type: str
     length: int
-    constrains: list[str]
+    constrains: List[str]
 
 
 class ForignKey(TypedDict):
@@ -23,7 +23,7 @@ class ForignKey(TypedDict):
 
     - *name*: string
     - *reference*: string
-    
+
     """
     name: str
     reference: str
@@ -33,9 +33,9 @@ class Instance(TypedDict):
     """
     A table instance type
 
-    - *columns?*: list[string]
-    - *values*: list[string]
-    
+    - *columns?*: List[string]
+    - *values*: List[string]
+
     """
-    columns: list[str]
-    values: list[str]
+    columns: List[str]
+    values: List[str]

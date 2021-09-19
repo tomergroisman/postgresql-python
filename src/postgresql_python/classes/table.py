@@ -1,3 +1,4 @@
+from types import List
 from postgresql_python.connection import Connection
 from postgresql_python.types import Column, ForignKey, Instance
 
@@ -11,9 +12,9 @@ class Table(Connection):
     def create_table(
         self,
         table_name: str,
-        columns: list[Column],
-        primary_keys: list[str] = None,
-        forign_keys: list[ForignKey] = None
+        columns: List[Column],
+        primary_keys: List[str] = None,
+        forign_keys: List[ForignKey] = None
     ):
         """
         Create a new table in the database
