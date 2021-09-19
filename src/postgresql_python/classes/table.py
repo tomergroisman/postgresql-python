@@ -1,4 +1,4 @@
-from types import List
+from typing import List
 from postgresql_python.connection import Connection
 from postgresql_python.types import Column, ForignKey, Instance
 
