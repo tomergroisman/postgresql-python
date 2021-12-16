@@ -97,8 +97,8 @@ class Table(Connection):
         columns: str = '*',
         filter: str = '1=1',
         order: str = '1',
-        limit: int = 'ALL',
-        offset: int = 0,
+        limit: str = 'ALL',
+        offset: str = 0,
     ):
         """
         Get instances from the table
@@ -106,9 +106,9 @@ class Table(Connection):
         - *table_name*: The table name to get from
         - *columns (optional)*: The columns to filter, default is all columns
         - *filter (optional)*: A SQL query filter
-        - *order (optional)* (string): Order instances command
-        - *limit (optional)* (int): Limitation number of result
-        - *offset (optional)* (int): Offset from the first instance
+        - *order (optional)*: Order instances command
+        - *limit (optional)*: Limitation number of result
+        - *offset (optional)*: Offset from the first instance
 
         """
         get_query = f'SELECT {columns} FROM {table_name} WHERE {filter} ORDER BY {order} LIMIT {limit} OFFSET {offset}'
