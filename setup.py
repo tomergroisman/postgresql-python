@@ -3,7 +3,7 @@ from setuptools import setup
 
 setup(
     name='postgresql_python',
-    version='1.0.6',
+    version='1.0.7',
     description='Python PostgreSQL Utils',
     author='Tomer Groisman',
     install_requires=['psycopg2', 'flake8'],
