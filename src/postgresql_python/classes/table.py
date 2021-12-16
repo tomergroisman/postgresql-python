@@ -91,16 +91,27 @@ class Table(Connection):
         )
         self._cursor.execute(insert_instance_query)
 
-    def get(self, table_name: str, columns: str = '*', filter: str = '1=1'):
+    def get(
+        self,
+        table_name: str,
+        columns: str = '*',
+        filter: str = '1=1',
+        limit: int = 'ALL',
+        offset: int = 0,
+        order: str = 'DESC'
+    ):
         """
         Get instances from the table
 
         - *table_name*: The table name to get from
         - *columns (optional)*: The columns to filter, default is all columns
         - *filter (optional)*: A SQL query filter
+        - *limit (optional)* (int): Limitation number of result
+        - *offset (optional)* (int): Offset from the first instance
+        - *order (optional)* (string): Order instances command
 
         """
-        get_query = f'SELECT {columns} FROM {table_name} WHERE {filter}'
+        get_query = f'SELECT {columns} FROM {table_name} WHERE {filter} ORDER BY {order} LIMIT {limit} OFFSET {offset}'
         self._cursor.execute(get_query)
         results = self._cursor.fetchall()
         return results
